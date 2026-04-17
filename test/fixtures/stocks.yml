@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  action: 1
+  quantity: 1
+  cost: 9.99
+  date: 2026-04-17
+
+two:
+  product: two
+  action: 1
+  quantity: 1
+  cost: 9.99
+  date: 2026-04-17
