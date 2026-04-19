@@ -22,7 +22,7 @@ class Stock < ApplicationRecord
     when "addition", "devolution"
       product.increment!(:stock, quantity)
     when "removal"
-      product.decrement!(:stock, quantity)  
+      product.decrement!(:stock, quantity)
     end
   end
 
