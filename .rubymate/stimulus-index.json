@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "indexedAt": 1776460515829,
+  "controllers": {
+    "hello": {
+      "filePath": "/Users/jjmerlo/Dev/proyectos-personales/inventario_app/app/javascript/controllers/hello_controller.js",
+      "targets": [],
+      "values": [],
+      "outlets": [],
+      "actions": [],
+      "classes": [],
+      "mtime": 1776448076450.9443
+    }
+  }
+}
