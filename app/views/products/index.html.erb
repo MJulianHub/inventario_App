@@ -1,0 +1,14 @@
+<h1>Productos</h1>
+
+<%= link_to "New Product", new_product_path %>
+
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= product.name %> - <%= product.category.name %>
+      <%= link_to "Show", product %>
+      <%= link_to "Edit", edit_product_path(product) %>
+      <%= link_to "Delete", product, data: { turbo_method: :delete, turbo_confirm: "Esta seguro de eliminar el producto" } %>
+    </li>
+  <% end %>
+</ul>
