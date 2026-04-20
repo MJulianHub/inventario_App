@@ -1,0 +1,46 @@
+<%= form_with(model: @product) do |f| %>
+
+  <% if @product.errors.any? %>
+    <div>
+      <% @product.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :code %>
+    <%= f.text_field :code %>
+  </div>
+
+  <div>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div>
+    <%= f.label :stock %>
+    <%= f.number_field :stock %>
+  </div>
+
+  <div>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div>
+  <%= f.label :active %>
+  <%= f.check_box :active %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+
+<% end %>
