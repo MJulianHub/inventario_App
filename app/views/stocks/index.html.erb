@@ -1,0 +1,27 @@
+<h1>Stock Movements</h1>
+
+<%= link_to "New Movement", new_stock_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Action</th>
+      <th>Quantity</th>
+      <th>Cost</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stocks.each do |s| %>
+      <tr>
+        <td><%= s.product&.name %></td>
+        <td><%= s.action %></td>
+        <td><%= s.quantity %></td>
+        <td><%= s.cost %></td>
+        <td><%= s.created_at.strftime("%Y-%m-%d") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
