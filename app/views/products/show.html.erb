@@ -1,9 +1,56 @@
 <h1><%= @product.name %></h1>
 
-<p><strong>Code:</strong> <%= @product.code %></p>
-<p><strong>Price:</strong> <%= @product.price %></p>
-<p><strong>Stock:</strong> <%= @product.stock %></p>
-<p><strong>Category:</strong> <%= @product.category&.name %></p>
+<div class="product-detail">
+  <p><strong>Codigo:</strong> <%= @product.code %></p>
+  <p><strong>Descripcion:</strong> <%= @product.description || "Sin descripcion" %></p>
+  <p><strong>Precio:</strong> <%= number_to_currency(@product.price) %></p>
+  <p><strong>Stock actuel:</strong> <%= @product.stock %> unidades</p>
+  <p><strong>Categoria:</strong> <%= @product.category&.name || "Sin categoria" %></p>
+  <p><strong>Estado:</strong> <%= @product.active? ? "Activo" : "Inactivo" %></p>
+</div>
 
-<%= link_to "Edit", edit_product_path(@product) %>
-<%= link_to "Back", products_path %>
+<div class="actions">
+  <%= link_to "Editar", edit_product_path(@product), class: "btn btn-primary" %>
+  <%= link_to "Volver", products_path, class: "btn btn-secondary" %>
+</div>
+
+<h3>Historial de Movimientos</h3>
+
+<% if @product.stocks.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Tipo de Movimiento</th>
+        <th>Cantidad</th>
+        <th>Costo</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @product.stocks.each do |s| %>
+        <tr>
+          <td>
+            <%= case s.action
+                when "addition" then "Entrada"
+                when "removal" then "Salida"
+                when "devolution" then "Devolucion"
+                end %>
+          </td>
+          <td><%= s.quantity %></td>
+          <td><%= number_to_currency(s.cost) %></td>
+          <td><%= s.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-message">No hay movimientos registrados.</p>
+<% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No hay movimientos registrados.</p>
+<% end %>
+
+

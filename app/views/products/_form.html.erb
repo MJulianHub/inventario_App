@@ -1,10 +1,56 @@
-<%= form_with(model: @product) do |f| %>
+<%= form_with(model: @product, class: "form") do |f| %>
 
   <% if @product.errors.any? %>
-    <div>
-      <% @product.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-      <% end %>
+    <div class="alert alert-danger">
+      <h4>Por favor corrige los siguientes errores:</h4>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, "Nombre del producto" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Ingresa el nombre" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, "Descripcion" %>
+    <%= f.text_area :description, class: "form-control", placeholder: "Ingresa una descripcion" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :code, "Codigo" %>
+    <%= f.text_field :code, class: "form-control", placeholder: "Ingresa el codigo" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price, "Precio" %>
+    <%= f.number_field :price, class: "form-control", min: 0, step: 0.01, placeholder: "0.00" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :stock, "Stock inicial" %>
+    <%= f.number_field :stock, class: "form-control", min: 0, placeholder: "0" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category_id, "Categoria" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Selecciona una categoria" }, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :active, "Activo" %>
+    <%= f.check_box :active %> <span>Marcar si el producto esta disponible</span>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Guardar Producto", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
     </div>
   <% end %>
 
@@ -25,17 +71,17 @@
 
   <div>
     <%= f.label :price %>
-    <%= f.number_field :price %>
+    <%= f.number_field :price, min: 1 %>
   </div>
 
   <div>
     <%= f.label :stock %>
-    <%= f.number_field :stock %>
+    <%= f.number_field :stock, min: 1 %>
   </div>
 
   <div>
     <%= f.label :category %>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Selecciona un producto" %>
   </div>
 
   <div>

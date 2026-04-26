@@ -2,10 +2,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @products = Product.includes(:category)
+    @products = Product.includes(:category) # eager loading
   end
 
   def show
+    @product = Product.includes(:stocks).find(params[:id])
   end
 
   def new
@@ -21,6 +22,7 @@ class ProductsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def edit
   end

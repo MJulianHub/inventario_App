@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :category
-  has_many :stocks, dependent: :destroy
+  has_many :stocks, dependent: :restrict_with_error
 
   validates :name, presence: true
   validates :code, presence: true, uniqueness: true

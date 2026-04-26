@@ -1,6 +1,11 @@
 <h1><%= @category.name %></h1>
 
-<p><%= @category.description %></p>
+<div class="category-detail">
+  <p><strong>Descripcion:</strong> <%= @category.description || "Sin descripcion" %></p>
+  <p><strong>Productos relacionados:</strong> <%= @category.products.count %></p>
+</div>
 
-<%= link_to "Edit", edit_category_path(@category) %>
-<%= link_to "Back", categories_path %>
+<div class="actions">
+  <%= link_to "Editar", edit_category_path(@category), class: "btn btn-primary" %>
+  <%= link_to "Volver", categories_path, class: "btn btn-secondary" %>
+</div>

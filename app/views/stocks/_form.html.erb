@@ -1,35 +1,42 @@
-<%= form_with(model: @stock) do |f| %>
+<%= form_with(model: @stock, class: "form") do |f| %>
 
   <% if @stock.errors.any? %>
-    <div>
-      <% @stock.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-      <% end %>
+    <div class="alert alert-danger">
+      <h4>Por favor corrige los siguientes errores:</h4>
+      <ul>
+        <% @stock.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= f.label :product %>
-    <%= f.collection_select :product_id, Product.all, :id, :name %>
+  <div class="form-group">
+    <%= f.label :product_id, "Producto" %>
+    <%= f.collection_select :product_id, Product.all, :id, :name, { prompt: "Selecciona un producto" }, class: "form-control" %>
   </div>
 
-  <div>
-    <%= f.label :action %>
-    <%= f.select :action, Stock.actions.keys.map { |a| [a.capitalize, a] } %>
+  <div class="form-group">
+    <%= f.label :action, "Tipo de Movimiento" %>
+    <%= f.select :action, options_for_select([
+      ["Entrada (agregar stock)", "addition"],
+      ["Salida (remover stock)", "removal"],
+      ["Devolucion", "devolution"]
+    ]), { prompt: "Selecciona el tipo de movimiento" }, class: "form-control" %>
   </div>
 
-  <div>
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity %>
+  <div class="form-group">
+    <%= f.label :quantity, "Cantidad" %>
+    <%= f.number_field :quantity, class: "form-control", min: 1, placeholder: "Cantidad de unidades" %>
   </div>
 
-  <div>
-    <%= f.label :cost %>
-    <%= f.number_field :cost, step: 0.01 %>
+  <div class="form-group">
+    <%= f.label :cost, "Costo Unitario" %>
+    <%= f.number_field :cost, class: "form-control", min: 0, step: 0.01, placeholder: "0.00" %>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit "Registrar Movimiento", class: "btn btn-primary" %>
   </div>
 
 <% end %>
