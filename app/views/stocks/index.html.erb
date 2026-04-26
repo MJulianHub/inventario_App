@@ -1,27 +1,37 @@
-<h1>Stock Movements</h1>
+<h1>Movimientos de Stock</h1>
 
-<%= link_to "New Movement", new_stock_path %>
+<%= link_to "Nuevo Movimiento", new_stock_path, class: "btn btn-primary" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Product</th>
-      <th>Action</th>
-      <th>Quantity</th>
-      <th>Cost</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @stocks.each do |s| %>
+<% if @stocks.any? %>
+  <table>
+    <thead>
       <tr>
-        <td><%= s.product&.name %></td>
-        <td><%= s.action %></td>
-        <td><%= s.quantity %></td>
-        <td><%= s.cost %></td>
-        <td><%= s.created_at.strftime("%Y-%m-%d") %></td>
+        <th>Producto</th>
+        <th>Tipo de Movimiento</th>
+        <th>Cantidad</th>
+        <th>Costo Unitario</th>
+        <th>Fecha</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @stocks.each do |s| %>
+        <tr>
+          <td><%= s.product&.name %></td>
+          <td>
+            <%= case s.action
+                when "addition" then "Entrada"
+                when "removal" then "Salida"
+                when "devolution" then "Devolucion"
+                end %>
+          </td>
+          <td><%= s.quantity %></td>
+          <td><%= number_to_currency(s.cost) %></td>
+          <td><%= s.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-message">No hay movimientos registrados. <%= link_to "Registrar primer movimiento", new_stock_path %></p>
+<% end %>

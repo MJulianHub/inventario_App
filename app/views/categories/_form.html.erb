@@ -1,25 +1,28 @@
-<%= form_with(model: @category) do |f| %>
+<%= form_with(model: @category, class: "form") do |f| %>
 
   <% if @category.errors.any? %>
-    <div>
-      <% @category.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-      <% end %>
+    <div class="alert alert-danger">
+      <h4>Por favor corrige los siguientes errores:</h4>
+      <ul>
+        <% @category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, "Nombre de la categoria" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Ingresa el nombre" %>
   </div>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+  <div class="form-group">
+    <%= f.label :description, "Descripcion" %>
+    <%= f.text_area :description, class: "form-control", placeholder: "Ingresa una descripcion (opcional)" %>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit "Guardar Categoria", class: "btn btn-primary" %>
   </div>
 
 <% end %>

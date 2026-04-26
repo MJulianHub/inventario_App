@@ -1,14 +1,35 @@
 <h1>Productos</h1>
 
-<%= link_to "New Product", new_product_path %>
+<%= link_to "Nuevo Producto", new_product_path, class: "btn btn-primary" %>
 
-<ul>
-  <% @products.each do |product| %>
-    <li>
-      <%= product.name %> - <%= product.category.name %>
-      <%= link_to "Show", product %>
-      <%= link_to "Edit", edit_product_path(product) %>
-      <%= link_to "Delete", product, data: { turbo_method: :delete, turbo_confirm: "Esta seguro de eliminar el producto" } %>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Categoria</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.code %></td>
+        <td><%= number_to_currency(product.price) %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.category&.name %></td>
+        <td><%= product.active? ? "Activo" : "Inactivo" %></td>
+        <td>
+          <%= link_to "Ver", product, class: "btn btn-sm" %>
+          <%= link_to "Editar", edit_product_path(product), class: "btn btn-sm" %>
+          <%= link_to "Eliminar", product, class: "btn btn-sm btn-danger", data: { turbo_method: :delete, turbo_confirm: "Esta seguro de eliminar el producto?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to @category, notice: "Category was successfully created."
+      redirect_to @category, notice: "Categoria fue creada con exito."
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: "Category was successfully updated."
+      redirect_to @category, notice: "Categoria actualizada con exito."
     else
       render :edit, status: :unprocessable_entity
     end
