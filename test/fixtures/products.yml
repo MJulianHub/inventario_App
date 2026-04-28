@@ -2,18 +2,27 @@
 
 one:
   category: one
-  code: MyString
-  name: MyString
-  description: MyText
-  price: 9.99
-  stock: 1
-  active: false
+  code: PROD001
+  name: Laptop
+  description: Computadora portatil
+  price: 999.99
+  stock: 10
+  active: true
 
 two:
   category: two
-  code: MyString
-  name: MyString
-  description: MyText
-  price: 9.99
-  stock: 1
-  active: false
+  code: PROD002
+  name: Camisa
+  description: Camisa de algodon
+  price: 29.99
+  stock: 50
+  active: true
+
+three:
+  category: three
+  code: PROD003
+  name: Arroz
+  description: Arroz blando
+  price: 2.50
+  stock: 100
+  active: true
