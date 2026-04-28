@@ -85,7 +85,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       category: @category,
       active: true
     )
-    
+
     assert_difference("Product.count", -1) do
       delete product_url(product_to_delete)
     end

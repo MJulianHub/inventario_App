@@ -60,7 +60,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "deberia eliminar categoria sin productos" do
     # Crear categoria sin productos para este test
     category_to_delete = Category.create!(name: "Categoria para eliminar", description: "Test")
-    
+
     assert_difference("Category.count", -1) do
       delete category_url(category_to_delete)
     end
