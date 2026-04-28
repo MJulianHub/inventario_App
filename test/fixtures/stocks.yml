@@ -2,14 +2,21 @@
 
 one:
   product: one
-  action: 1
-  quantity: 1
-  cost: 9.99
-  date: 2026-04-17
+  action: addition
+  quantity: 5
+  cost: 950.00
+  date: 2026-04-20
 
 two:
-  product: two
-  action: 1
-  quantity: 1
-  cost: 9.99
-  date: 2026-04-17
+  product: one
+  action: removal
+  quantity: 2
+  cost: 950.00
+  date: 2026-04-21
+
+three:
+  product: three
+  action: addition
+  quantity: 50
+  cost: 1.50
+  date: 2026-04-22

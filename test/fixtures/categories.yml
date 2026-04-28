@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
+  name: Electronica
+  description: Dispositivos electronicos
 
 two:
-  name: MyString
-  description: MyString
+  name: Ropa
+  description: Prendas de vestir
+
+three:
+  name: Alimentos
+  description: Comestibles
