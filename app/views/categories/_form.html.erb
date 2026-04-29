@@ -3,15 +3,11 @@
   <% if @category.errors.any? %>
     <div class="alert alert-danger">
       <h4>Por favor verifica los campos del formulario</h4>
-      <%
-=begin%>
- <ul>
+      <ul>
         <% @category.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
-      </ul> 
-<%
-=end%>
+      </ul>
     </div>
   <% end %>
 
