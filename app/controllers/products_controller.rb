@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @products = Product.includes(:category) # eager loading
+    @products = Product.includes(:category).order(created_at: :desc)  # eager loading
   end
 
   def show

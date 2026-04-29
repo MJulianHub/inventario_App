@@ -1,6 +1,6 @@
 <h1>Movimientos de Stock</h1>
 
-<%= link_to "Nuevo Movimiento", new_stock_path, class: "btn btn-primary" %>
+<%= link_to "Nuevo Movimiento", new_stock_path, class: "btn btn-primary btn-uniform" %>
 
 <% if @stocks.any? %>
   <table>
@@ -26,8 +26,8 @@
                 end %>
           </td>
           <td><%= s.quantity %></td>
-          <td><%= number_to_currency(s.cost) %></td>
-          <td><%= s.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+          <td><%= number_to_currency(s.cost, unit: "C$", separator: ".", delimiter: ",") %></td>
+          <td><%= s.created_at.strftime("%d/%m/%Y %I:%M %p") %></td>
         </tr>
       <% end %>
     </tbody>

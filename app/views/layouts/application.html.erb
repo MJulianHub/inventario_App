@@ -32,14 +32,38 @@
     </header>
 
     <main class="container">
-      <% if notice %>
-        <div class="alert alert-success"><%= notice %></div>
-      <% end %>
-      <% if alert %>
-        <div class="alert alert-warning"><%= alert %></div>
-      <% end %>
-
       <%= yield %>
     </main>
+
+    <div class="alert-container">
+      <% if notice %>
+        <div class="alert alert-success">
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert alert-warning">
+          <%= alert %>
+        </div>
+      <% end %>
+    </div>
+
+    <script>
+  document.addEventListener("turbo:load", function() {
+    const alerts = document.querySelectorAll(".alert");
+
+    alerts.forEach(function(alert) {
+      setTimeout(function() {
+        alert.classList.add("hide");
+
+        setTimeout(function() {
+          alert.remove();
+        }, 300);
+
+      }, 3000);
+    });
+  });
+</script>
   </body>
 </html>

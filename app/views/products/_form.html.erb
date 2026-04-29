@@ -2,14 +2,25 @@
 
   <% if @product.errors.any? %>
     <div class="alert alert-danger">
-      <h4>Por favor corrige los siguientes errores:</h4>
-      <ul>
+      <h4>Por favor verifica los campos del formulario</h4>
+
+ <%
+=begin%>
+ <ul>
         <% @product.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
-      </ul>
+    </ul> 
+<%
+=end%>
+       
     </div>
   <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, "Nombre del producto" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Ingresa el nombre" %>
+  </div>
 
   <div class="form-group">
     <%= f.label :name, "Nombre del producto" %>
@@ -46,8 +57,9 @@
     <%= f.check_box :active %> <span>Marcar si el producto esta disponible</span>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit "Guardar Producto", class: "btn btn-primary" %>
+  <div class="form-actions actions">
+    <%= f.submit "Guardar Producto", class: "btn btn-primary btn-uniform" %>
+    <%= link_to "Volver", products_path, class: "btn btn-secondary btn-uniform"%>
   </div>
 
 <% end %>

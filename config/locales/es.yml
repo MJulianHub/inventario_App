@@ -1,0 +1,28 @@
+es:
+  activerecord:
+    attributes:
+      category:
+        name: "Nombre"
+        description: "Descripción"
+      product:
+        name: "Nombre"
+        code: "Código"
+        description: "Descripción"
+        price: "Precio"
+        stock: "Stock"
+        active: "Activo"
+        category: "Categoría"
+      stock:
+        product: "Producto"
+        action: "Tipo de movimiento"
+        quantity: "Cantidad"
+        cost: "Costo"
+        date: "Fecha"
+    errors:
+      messages:
+        blank: "no puede estar en blanco"
+        taken: "ya está en uso"
+        not_a_number: "no es un número"
+        greater_than_or_equal_to: "debe ser mayor o igual a %{count}"
+        greater_than: "debe ser mayor a %{count}"
+        inclusion: "no está incluido en la lista"

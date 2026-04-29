@@ -2,12 +2,16 @@
 
   <% if @stock.errors.any? %>
     <div class="alert alert-danger">
-      <h4>Por favor corrige los siguientes errores:</h4>
-      <ul>
+      <h4>Por favor verifica los campos del formulario</h4>
+      <%
+=begin%>
+ <ul>
         <% @stock.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
-      </ul>
+      </ul> 
+<%
+=end%>
     </div>
   <% end %>
 
@@ -35,8 +39,9 @@
     <%= f.number_field :cost, class: "form-control", min: 0, step: 0.01, placeholder: "0.00" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit "Registrar Movimiento", class: "btn btn-primary" %>
+  <div class="form-actions actions">
+    <%= f.submit "Registrar Movimiento", class: "btn btn-primary btn-uniform" %>
+    <%= link_to "Volver", stocks_path, class: "btn btn-secondary btn-uniform" %>
   </div>
 
 <% end %>

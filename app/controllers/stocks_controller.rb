@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   def index
-    @stocks = Stock.includes(:product) # eager loading
+    @stocks = Stock.includes(:product).order(created_at: :desc) # eager loading
   end
 
   def new

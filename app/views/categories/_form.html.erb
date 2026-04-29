@@ -2,12 +2,16 @@
 
   <% if @category.errors.any? %>
     <div class="alert alert-danger">
-      <h4>Por favor corrige los siguientes errores:</h4>
-      <ul>
+      <h4>Por favor verifica los campos del formulario</h4>
+      <%
+=begin%>
+ <ul>
         <% @category.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
-      </ul>
+      </ul> 
+<%
+=end%>
     </div>
   <% end %>
 
@@ -21,8 +25,9 @@
     <%= f.text_area :description, class: "form-control", placeholder: "Ingresa una descripcion (opcional)" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit "Guardar Categoria", class: "btn btn-primary" %>
+  <div class="form-actions actions">
+    <%= f.submit "Guardar Categoria", class: "btn btn-primary btn-uniform" %>
+    <%= link_to "Volver", categories_path, class: "btn btn-secondary btn-uniform" %>
   </div>
 
 <% end %>
