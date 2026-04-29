@@ -5,7 +5,7 @@
   <p><strong>Productos relacionados:</strong> <%= @category.products.count %></p>
 </div>
 
-<div class="actions">
-  <%= link_to "Editar", edit_category_path(@category), class: "btn btn-primary" %>
-  <%= link_to "Volver", categories_path, class: "btn btn-secondary" %>
+<div class="actions button-group">
+  <%= link_to "Editar", edit_category_path(@category), class: "btn btn-primary btn-uniform" %>
+  <%= link_to "Volver", categories_path, class: "btn btn-secondary btn-uniform " %>
 </div>
