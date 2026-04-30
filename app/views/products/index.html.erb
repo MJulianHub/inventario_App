@@ -25,8 +25,8 @@
         <td><%= product.category&.name %></td>
         <td><%= product.active? ? "Activo" : "Inactivo" %></td>
         <td>
-          <%= link_to "Ver", product, class: "btn btn-sm" %>
-          <%= link_to "Editar", edit_product_path(product), class: "btn btn-sm" %>
+          <%= link_to "Ver", product, class: "btn btn-sm btn-default " %>
+          <%= link_to "Editar", edit_product_path(product), class: "btn btn-sm btn-default " %>
           <%= link_to "Eliminar", product, class: "btn btn-sm btn-danger", data: { turbo_method: :delete, turbo_confirm: "Esta seguro de eliminar el producto?" } %>
         </td>
       </tr>
