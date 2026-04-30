@@ -19,9 +19,9 @@
         <td><%= category.description || "Sin descripcion" %></td>
         <td><%= category.products.count %></td>
         <td>
-          <%= link_to "Ver", category, class: "btn btn-sm" %>
-          <%= link_to "Editar", edit_category_path(category), class: "btn btn-sm" %>
-          <%= link_to "Eliminar", category, class: "btn btn-sm btn-danger", data: { turbo_method: :delete, turbo_confirm: "Esta seguro de eliminar la categoria? Esto tambien eliminara todos los productos relacionados." } %>
+          <%= link_to "Ver", category, class: "btn btn-sm btn-default" %>
+          <%= link_to "Editar", edit_category_path(category), class: "btn btn-sm btn-default" %>
+          <%= link_to "Eliminar", category, class: "btn btn-sm btn-danger", data: { turbo_method: :delete, turbo_confirm: "Esta acción no se puede deshacer. ¿Continuar?" } %>
         </td>
       </tr>
     <% end %>
