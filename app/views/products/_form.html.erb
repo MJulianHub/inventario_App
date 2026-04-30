@@ -3,24 +3,13 @@
   <% if @product.errors.any? %>
     <div class="alert alert-danger">
       <h4>Por favor verifica los campos del formulario</h4>
-
- <%
-=begin%>
- <ul>
+      <ul>
         <% @product.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
-    </ul> 
-<%
-=end%>
-       
+      </ul>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :name, "Nombre del producto" %>
-    <%= f.text_field :name, class: "form-control", placeholder: "Ingresa el nombre" %>
-  </div>
 
   <div class="form-group">
     <%= f.label :name, "Nombre del producto" %>
