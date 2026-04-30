@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: "Producto creado"
+      redirect_to @product, notice: "Producto creado con exito"
     else
       render :new, status: :unprocessable_entity
     end

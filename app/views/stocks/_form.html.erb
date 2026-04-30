@@ -32,7 +32,7 @@
 
   <div class="form-group">
     <%= f.label :cost, "Costo Unitario" %>
-    <%= f.number_field :cost, class: "form-control", min: 0, step: 0.01, placeholder: "0.00" %>
+    <%= f.number_field :cost, class: "form-control", readonly: true, placeholder: "Se llena automaticamente" %>
   </div>
 
   <div class="form-actions actions">
@@ -40,4 +40,17 @@
     <%= link_to "Volver", stocks_path, class: "btn btn-secondary btn-uniform" %>
   </div>
 
+  <script>
+    (function() {
+      var productSelect = document.querySelector('[name="stock[product_id]"]');
+      var costField = document.querySelector('[name="stock[cost]"]');
+      var prices = <%= Product.all.map { |p| [p.id, p.price] }.to_h.to_json.html_safe %>;
+
+      if (productSelect && costField) {
+        productSelect.addEventListener("change", function() {
+          costField.value = prices[this.value] || "";
+        });
+      }
+    })();
+  </script>
 <% end %>

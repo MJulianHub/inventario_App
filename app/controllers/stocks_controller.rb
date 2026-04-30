@@ -11,7 +11,7 @@ class StocksController < ApplicationController
     @stock = Stock.new(stock_params)
 
     if @stock.save
-      redirect_to stocks_path, notice: "Movimiento registrado"
+      redirect_to stocks_path, notice: "Movimiento registrado con exito"
     else
       render :new, status: :unprocessable_entity
     end
