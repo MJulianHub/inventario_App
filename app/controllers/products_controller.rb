@@ -36,8 +36,13 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    redirect_to products_path
+
+    if @product.destroy
+      redirect_to products_path, notice: "Producto eliminado con exito"
+    else
+      redirect_to products_path, alert: "No se puede eliminar el producto, tiene movimientos asociados"
+    end
+    
   end
 
   private

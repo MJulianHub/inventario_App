@@ -34,8 +34,12 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
-    redirect_to categories_path
+    if @category.destroy
+      redirect_to categories_path, notice: "Categoria eliminada con exito"
+    else
+      redirect_to categories_path, alert: "No se puede eliminar la categoria, tiene productos asociados"
+    end
+    
   end
 
   private
