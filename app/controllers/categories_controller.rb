@@ -39,7 +39,6 @@ class CategoriesController < ApplicationController
     else
       redirect_to categories_path, alert: "No se puede eliminar la categoria, tiene productos asociados"
     end
-    
   end
 
   private
