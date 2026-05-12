@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: "Producto creado con exito"
+      redirect_to new_stock_path(product_id: @product.id), notice: "Producto creado con exito, agregue el stock inicial"
     else
       render :new, status: :unprocessable_entity
     end

@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :code, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :stock, numericality: { greater_than_or_equal_to: 0 }
+  validates :stock, numericality: { greater_than_or_equal_to: 0 },  allow_nil: true
   validates :active, inclusion: { in: [ true, false ] }
 
   # Cada producto pertenece a un acategoria
