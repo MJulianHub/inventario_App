@@ -16,7 +16,7 @@
     <%= f.collection_select :product_id, Product.all, :id, :name, { prompt: "Selecciona un producto" }, class: "form-control" %>
   </div>
 
-  <div class="form-group">
+   <div class="form-group">
     <%= f.label :action, "Tipo de Movimiento" %>
     <%= f.select :action, options_for_select([
       ["Entrada (agregar stock)", "addition"],
@@ -32,7 +32,7 @@
 
   <div class="form-group">
     <%= f.label :cost, "Costo Unitario" %>
-    <%= f.number_field :cost, class: "form-control", readonly: true, placeholder: "Se llena automaticamente" %>
+    <%= f.number_field :cost, class: "form-control", readonly: true, disabled: true, placeholder: "Se llena automaticamente" %>
   </div>
 
   <div class="form-actions actions">
@@ -41,16 +41,13 @@
   </div>
 
   <script>
-    (function() {
-      var productSelect = document.querySelector('[name="stock[product_id]"]');
-      var costField = document.querySelector('[name="stock[cost]"]');
-      var prices = <%= Product.all.map { |p| [p.id, p.price] }.to_h.to_json.html_safe %>;
+  const productSelect = document.querySelector('[name="stock[product_id]"]');
+  const costField = document.querySelector('[name="stock[cost]"]');
 
-      if (productSelect && costField) {
-        productSelect.addEventListener("change", function() {
-          costField.value = prices[this.value] || "";
-        });
-      }
-    })();
-  </script>
+  const prices = <%= Product.pluck(:id, :price).to_h.to_json.html_safe %>;
+
+  productSelect.addEventListener("change", function() {
+    costField.value = prices[this.value] || "";
+  });
+</script>
 <% end %>
