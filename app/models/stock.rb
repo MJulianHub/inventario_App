@@ -3,7 +3,7 @@ class Stock < ApplicationRecord
   enum :action, {
     addition: 0,
     removal: 1,
-    devolution: 2,
+    devolution: 2
   }
 
   validates :quantity, presence: true, numericality: { greater_than: 0 }
@@ -22,10 +22,10 @@ class Stock < ApplicationRecord
       "removal" => "Salida",
       "devolution" => "Devolucion"
     }[action]
-
   end
 
   private
+
   def update_product_stock
     case action
     when "addition", "devolution"
