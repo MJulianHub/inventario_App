@@ -136,3 +136,11 @@ Proyecto desarrollado por Jose Julian Merlo Perez como parte de una pasantía
 Cambios Solicitados
 
 Se mejoró el flujo de inventario para que los productos se creen con stock inicial en 0 y el inventario se gestione únicamente mediante movimientos de stock, manteniendo trazabilidad completa del historial. Para lograrlo cuando se crea un producto redirege automaticamentenal formulario de stock para agregar un stock addition.
+
+<img width="1656" height="815" alt="Captura de pantalla 2026-05-12 a la(s) 11 57 06 a  m" src="https://github.com/user-attachments/assets/eb744c15-c0a3-4647-a42e-4d9cb532c0df" />
+<img width="1564" height="723" alt="Captura de pantalla 2026-05-12 a la(s) 11 57 20 a  m" src="https://github.com/user-attachments/assets/adb94903-f92d-424d-9a50-eef9dbaa9c60" />
+<img width="1584" height="683" alt="Captura de pantalla 2026-05-12 a la(s) 11 57 30 a  m" src="https://github.com/user-attachments/assets/e69b7ef7-3c71-4eba-8fd4-e8a874f84dab" />
+<img width="1388" height="835" alt="Captura de pantalla 2026-05-12 a la(s) 11 57 39 a  m" src="https://github.com/user-attachments/assets/dfa2701f-5584-4ecd-8ce2-ad9238b281e4" />
+<img width="1503" height="715" alt="Captura de pantalla 2026-05-12 a la(s) 11 57 50 a  m" src="https://github.com/user-attachments/assets/fe0ebc6b-f5f5-40dc-97e3-413be2dbb9c8" />
+<img width="1393" height="935" alt="Captura de pantalla 2026-05-12 a la(s) 11 58 07 a  m" src="https://github.com/user-attachments/assets/46cde05f-7880-4664-a1d9-79781024fe19" />
+
