@@ -19,11 +19,7 @@
         <tr>
           <td><%= s.product&.name %></td>
           <td>
-            <%= case s.action
-                when "addition" then "Entrada"
-                when "removal" then "Salida"
-                when "devolution" then "Devolucion"
-                end %>
+            <%= s.action_label %>
           </td>
           <td><%= s.quantity %></td>
           <td><%= number_to_currency(s.cost, unit: "C$", separator: ".", delimiter: ",") %></td>
