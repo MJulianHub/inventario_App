@@ -1,7 +1,7 @@
 <h1><%= @category.name %></h1>
 
 <div class="category-detail">
-  <p><strong>Descripcion:</strong> <%= @category.description || "Sin descripcion" %></p>
+  <p><strong>Descripcion:</strong> <%= @category.description.presence || "Sin descripcion" %></p>
   <p><strong>Productos relacionados:</strong> <%= @category.products.count %></p>
 </div>
 

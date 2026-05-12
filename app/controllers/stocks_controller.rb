@@ -9,6 +9,7 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(stock_params)
+    @stock.cost = @stock.product.price
 
     if @stock.save
       redirect_to stocks_path, notice: "Movimiento registrado con exito"
@@ -20,6 +21,6 @@ class StocksController < ApplicationController
   private
 
   def stock_params
-    params.require(:stock).permit(:product_id, :action, :quantity, :cost)
+    params.require(:stock).permit(:product_id, :action, :quantity)
   end
 end

@@ -3,7 +3,7 @@ class Stock < ApplicationRecord
   enum :action, {
     addition: 0,
     removal: 1,
-    devolution: 2
+    devolution: 2,
   }
 
   validates :quantity, presence: true, numericality: { greater_than: 0 }
@@ -15,6 +15,15 @@ class Stock < ApplicationRecord
   # Valida solo si la accion es removal
   validate :cannot_remove_more_than_available, if: :removal?
   after_create :update_product_stock
+
+  def action_label
+    {
+      "addition" => "Entrada",
+      "removal" => "Salida",
+      "devolution" => "Devolucion"
+    }[action]
+
+  end
 
   private
   def update_product_stock
