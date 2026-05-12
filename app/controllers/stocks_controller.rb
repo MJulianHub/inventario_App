@@ -4,7 +4,7 @@ class StocksController < ApplicationController
   end
 
   def new
-    @stock = Stock.new
+    @stock = Stock.new(product_id: params[:product_id], action: :addition)
   end
 
   def create

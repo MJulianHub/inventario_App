@@ -40,14 +40,22 @@
     <%= link_to "Volver", stocks_path, class: "btn btn-secondary btn-uniform" %>
   </div>
 
-  <script>
-  const productSelect = document.querySelector('[name="stock[product_id]"]');
-  const costField = document.querySelector('[name="stock[cost]"]');
+<script>
+  (function() {
+    var productSelect = document.querySelector('[name="stock[product_id]"]');
+    var costField = document.querySelector('[name="stock[cost]"]');
 
-  const prices = <%= Product.pluck(:id, :price).to_h.to_json.html_safe %>;
+    var prices = <%= Product.pluck(:id, :price).to_h.to_json.html_safe %>;
 
-  productSelect.addEventListener("change", function() {
-    costField.value = prices[this.value] || "";
-  });
+    function updateCost() {
+      costField.value = prices[productSelect.value] || "";
+    }
+
+    if (productSelect && costField) {
+      updateCost();
+
+      productSelect.addEventListener("change", updateCost);
+    }
+  })();
 </script>
 <% end %>
